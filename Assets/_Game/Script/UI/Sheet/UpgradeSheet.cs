@@ -19,4 +19,15 @@ public class UpgradeSheet : SheetBase<RoomElementData>
             (listSlots[i] as UpgradeSlot).SetCurrentRoomType(rType);
         }
     }
+
+    public void GetNextSlot() {
+        for (int i = 0; i < listSlots.Count; i++) {
+            if (listSlots[i] == currentSlot) {
+                if (i+1<listSlots.Count)
+                    listSlots[i + 1].OnChoose();
+                else listSlots[0].OnChoose();
+                return;
+            }
+        }
+    }
 }

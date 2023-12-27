@@ -14,22 +14,30 @@ public class PanelUpgrade : UIPanelBase
     [SerializeField] UpgradeSheet upgradeSheet;
     [SerializeField] Button btnClose;
     [SerializeField] Button btnUpgrade;
+    [SerializeField] Button btnNext;
     [SerializeField] TextMeshProUGUI txtPriceUpgrade;
     [SerializeField] TextMeshProUGUI txtElementName;
     [SerializeField] TextMeshProUGUI txtDescription;
     [SerializeField] RectTransform rectPrice;
-    [SerializeField] GameObject objMax;
+    [SerializeField] GameObject objNext;
     [SerializeField] ScrollRect scroll;
     [SerializeField] Slider sUpgrade;
+    [SerializeField] GridLayoutCustom layoutCustom;
+
     RoomInterface currentRoomInterface;
     float currentProgressUpgrade;
+    int slotAmount;
+    int totalSlot;
+
     public override void Awake()
     {
         uIPanelType = UIPanelType.PanelUpgrade;
         base.Awake();
         btnClose.onClick.AddListener(ClosePanel);
         btnUpgrade.onClick.AddListener(UpgradeRoomElement);
+        btnNext.onClick.AddListener(NextElement);
         upgradeSheet.SetActionCallBack(ActionCallBackOnUpgradeSlot);
+        slotAmount = layoutCustom.columnCount;
     }
 
     private void OnEnable()
@@ -48,10 +56,12 @@ public class PanelUpgrade : UIPanelBase
     }
 
     void ActionCallBackOnUpgradeSlot(SlotBase<RoomElementData> slot) {
+        totalSlot = upgradeSheet.listSlots.Count;
         int currentLevel = (slot as UpgradeSlot).currentLevel;
-        objMax.SetActive((slot as UpgradeSlot).isMaxlevel);
+        objNext.SetActive((slot as UpgradeSlot).isMaxlevel);
+        btnUpgrade.gameObject.SetActive(!objNext.activeSelf);
 
-        if (!objMax.activeSelf)
+        if (!objNext.activeSelf)
             txtPriceUpgrade.text = slot.data.GetPrice(currentLevel).ToString();
 
         txtDescription.text = ProfileManager.Instance.dataConfig.roomDataConfig.GetRoomElementDescription(slot.data.rType);
@@ -73,6 +83,12 @@ public class PanelUpgrade : UIPanelBase
         currentProgressUpgrade++;
         ChangeSliderUpgrade(currentProgressUpgrade);
         UIAnimationController.BtnAnimZoomBasic(btnUpgrade.transform, 0.25f);
+    }
+
+    void NextElement() {
+        UIAnimationController.BtnAnimZoomBasic(btnNext.transform, 0.25f, () => {
+            upgradeSheet.GetNextSlot();
+        });
     }
 
     void ClosePanel() {

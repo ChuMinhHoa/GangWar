@@ -28,13 +28,22 @@ public class RoomBase : MonoBehaviour, RoomInterface
         {
             ProfileManager.Instance.playerData.roomDataSave.SaveFirstRoomData(roomData);
         }
-        for (int i = 0; i < roomElements.Count; i++)
+        for (int i = 0; i < roomData.roomElementData.Count; i++)
         {
             //roomElements[i].roomElementID = i;
-            roomElements[i].rData = roomData.roomElementData[i];
+            SetRoomData(roomData.roomElementData[i].rType, roomData.roomElementData[i]);  
+        }
+        for (int i = 0; i < roomElements.Count; i++)
+        {
             ClearObject(roomElements[i]);
         }
+       
+
         SpawnStaff();
+    }
+
+    public virtual void SetRoomData(RoomElementType rType, RoomElementData roomElementData) {
+        roomElements.Find(e => e.rType == rType).AddRoomData(roomElementData);
     }
 
     public virtual void SpawnStaff() {
@@ -42,12 +51,15 @@ public class RoomBase : MonoBehaviour, RoomInterface
     }
 
     void ClearObject(RoomElementBase roomElementBase) {
-        if (roomElementBase.pointSpawn.childCount > 0)
+        for (int i = 0; i < roomElementBase.pointSpawn.Count; i++)
         {
-            Destroy(roomElementBase.pointSpawn.GetChild(0).gameObject);
+            if (roomElementBase.pointSpawn[i].childCount > 0)
+            {
+                Destroy(roomElementBase.pointSpawn[i].GetChild(0).gameObject);
+            }
+            int elementLevel = ProfileManager.Instance.playerData.roomDataSave.GetLevelRoomElementOnRoomType(roomType, roomElementBase.rData[i].rElementID, roomId);
+            UpdatePrefOnPosition(roomElementBase, elementLevel, i);
         }
-        int elementLevel = ProfileManager.Instance.playerData.roomDataSave.GetLevelRoomElementOnRoomType(roomType, roomElementBase.rData.rElementID, roomId);
-        UpdatePrefOnPosition(roomElementBase, elementLevel);
     }
 
     public virtual RoomElementBase GetFurniture(RoomElementType furnitureType) {
@@ -70,7 +82,7 @@ public class RoomBase : MonoBehaviour, RoomInterface
         roomElementTemp = roomElements.Find(e => e.rType == roomElement);
         if (roomElementTemp != null)
         {
-            return roomElementTemp.pointSpawn;
+            //return roomElementTemp.pointSpawn;
         }
         return null;
     }
@@ -89,29 +101,29 @@ public class RoomBase : MonoBehaviour, RoomInterface
     {
         for (int i = 0;i < roomElements.Count;i++)
         {
-            if (roomElements[i].rType == rElementType && roomElements[i].rData.rElementID == id)
+            if (roomElements[i].rType == rElementType)
             {
-                UpdatePrefOnPosition(roomElements[i], level);
+                UpdatePrefOnPosition(roomElements[i], level, roomElements[i].GetPointIndex(id));
                 break;
             }
         }
     }
     GameObject objPref;
     Transform trsTemp;
-    void UpdatePrefOnPosition(RoomElementBase roomElement, int level) {
+    void UpdatePrefOnPosition(RoomElementBase roomElement, int level, int pointIndex) {
         objPref = GameManager.Instance.GetModelPref(roomElement.rType, level);
         if (objPref != null) {
-            if (roomElement.pointSpawn.childCount > 0)
-                Destroy(roomElement.pointSpawn.GetChild(0).gameObject);
-            trsTemp = Instantiate(objPref, roomElement.pointSpawn).transform;
+            if (roomElement.pointSpawn[pointIndex].childCount > 0)
+                Destroy(roomElement.pointSpawn[pointIndex].GetChild(0).gameObject);
+            trsTemp = Instantiate(objPref, roomElement.pointSpawn[pointIndex]).transform;
             trsTemp.transform.localPosition = Vector3.zero;
-            trsTemp.transform.rotation = roomElement.pointSpawn.rotation;
+            trsTemp.transform.rotation = roomElement.pointSpawn[pointIndex].rotation;
         }
     }
 
     public Transform GetElementTransform(RoomElementType roomElement, int id)
     {
-       return roomElements.Find(e => e.rType == roomElement && e.rData.rElementID == id).pointSpawn.transform;
+        return roomElements.Find(e => e.rType == roomElement).GetElementTransform(id).transform;
     }
 
     public int GetRoomID()
@@ -126,7 +138,7 @@ public class RoomBase : MonoBehaviour, RoomInterface
         totalUpgradeReturn = 0;
         for (int i = 0; i < roomElements.Count; i++)
         {
-            totalUpgradeReturn += roomElements[i].rData.prices.Count;
+            totalUpgradeReturn += roomElements[i].GetTotalUpgrade();
         }
         return totalUpgradeReturn;
     }
@@ -136,7 +148,7 @@ public class RoomBase : MonoBehaviour, RoomInterface
         currentUpgradeProgress = 0;
         for (int i = 0; i < roomElements.Count; i++)
         {
-            currentUpgradeProgress += ProfileManager.Instance.playerData.roomDataSave.GetLevelRoomElementOnRoomType(roomType, roomElements[i].rData.rElementID, roomId);
+            currentUpgradeProgress += roomElements[i].GetCurrentUpgrade(roomType, roomId);
         }
         return currentUpgradeProgress;
     }

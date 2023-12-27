@@ -7,7 +7,7 @@ public class GridLayoutCustom : MonoBehaviour
 {
     [SerializeField] GridLayoutGroup myGrid;
     [SerializeField] RectTransform myRect;
-    [SerializeField] int columnCount;
+    public int columnCount;
     [SerializeField] bool fixedHeight;
     private void OnEnable()
     {
