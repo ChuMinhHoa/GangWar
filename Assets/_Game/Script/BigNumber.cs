@@ -248,7 +248,7 @@ public class BigNumber {
     public override string ToString() {
         normalize();
         string format = "";
-        if ((exp < 3 && value % (int)value == 0) || value == 0)
+        if ((exp < 3 && (value % (int)value) * 100 < 0.99) || value == 0)
             format = "0";
         else format = "0.00";
         return this.value.ToString(format).Replace(",", ".") + "" + powTenToName[this.exp / 3];

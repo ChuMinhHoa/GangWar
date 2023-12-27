@@ -132,6 +132,7 @@ GameObject:
   - component: {fileID: 2903401812029498866}
   - component: {fileID: 274519966828700359}
   - component: {fileID: 9137731276588324692}
+  - component: {fileID: 1288694881886595781}
   m_Layer: 0
   m_Name: WrapLevel
   m_TagString: Untagged
@@ -188,7 +189,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 38efdfd2cb5b648e882835ae19da50bb, type: 3}
+  m_Sprite: {fileID: 21300000, guid: db3a71f534acf4c4086c40531b2b4c5f, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -198,6 +199,21 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
+--- !u!114 &1288694881886595781
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2550088738883326869}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cfabb0440166ab443bba8876756fdfa9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_EffectColor: {r: 0, g: 0, b: 0, a: 0.5}
+  m_EffectDistance: {x: 1, y: -3}
+  m_UseGraphicAlpha: 1
 --- !u!1 &5293564654333859009
 GameObject:
   m_ObjectHideFlags: 0
@@ -209,6 +225,7 @@ GameObject:
   - component: {fileID: 3659308780012844847}
   - component: {fileID: 8812526841931540296}
   - component: {fileID: 3519500787678726031}
+  - component: {fileID: 8723594717347252097}
   m_Layer: 0
   m_Name: Icon
   m_TagString: Untagged
@@ -264,7 +281,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 622b387746855489f8dd664488282011, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 85268b54bb942824f8140d896f8548c9, type: 3}
   m_Type: 0
   m_PreserveAspect: 1
   m_FillCenter: 1
@@ -274,6 +291,21 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
+--- !u!114 &8723594717347252097
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5293564654333859009}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cfabb0440166ab443bba8876756fdfa9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_EffectColor: {r: 0, g: 0, b: 0, a: 0.5}
+  m_EffectDistance: {x: 5, y: -5}
+  m_UseGraphicAlpha: 1
 --- !u!1 &7116995196503913853
 GameObject:
   m_ObjectHideFlags: 0
@@ -336,15 +368,18 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   data:
     rType: 0
+    rElementID: 0
     prices: []
   trsAnim: {fileID: 3405751025714839647}
   btnChoose: {fileID: 2976946875924305736}
+  imgIcon: {fileID: 3519500787678726031}
   currentLevel: 0
   txtLevel: {fileID: 3702775788388441615}
   imgBackground: {fileID: 6727970685297284005}
   bgDeselect: {fileID: 21300000, guid: 3b138056c48cc4b0b9212a17f2770603, type: 3}
   bgSelect: {fileID: 21300000, guid: d08f60ef09739438ca3ab0cde6f4720f, type: 3}
   bgLock: {fileID: 21300000, guid: 906a104b67bbe476ba0bc6bdae09fc44, type: 3}
+  isMaxlevel: 0
 --- !u!1 &8210387320684978403
 GameObject:
   m_ObjectHideFlags: 0

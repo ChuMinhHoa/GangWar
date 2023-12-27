@@ -12,4 +12,11 @@ public class UpgradeSheet : SheetBase<RoomElementData>
         if (actionCallback != null)
             actionCallback(slot);
     }
+
+    public void SetCurrentRoomType(RoomType rType) {
+        for (int i = 0; i < listSlots.Count; i++)
+        {
+            (listSlots[i] as UpgradeSlot).SetCurrentRoomType(rType);
+        }
+    }
 }

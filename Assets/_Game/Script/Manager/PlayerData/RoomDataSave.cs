@@ -5,60 +5,36 @@ using UnityEngine;
 [System.Serializable]
 public class RoomDataSave : SaveBase
 {
-    public RoomSave cannabisRoomSave;
+    public List<RoomSave> cannabisRoomSaves = new List<RoomSave>();
     public override void LoadData(int level)
     {
         SetStringSave("RoomDataSave" + level);
-        base.LoadData();
         string jData = GetJsonData();
         if (!string.IsNullOrEmpty(jData))
         {
-
+            RoomDataSave data = JsonUtility.FromJson<RoomDataSave>(jData);
+            cannabisRoomSaves = data.cannabisRoomSaves;
         }
         else {
-
             IsMarkChangeData();
             SaveData();
         }
     }
 
-    public int GetLevelRoomElementOnRoomType(RoomType rType, RoomElementType rElementType) {
+    public int GetLevelRoomElementOnRoomType(RoomType rType, int rElementID) {
         switch (rType) {
             case RoomType.CannabisRoom:
-                return cannabisRoomSave.GetLevelRoomType(rElementType);
+                return cannabisRoomSaves[0].GetLevelRoomType(rElementID);
             default:
                 return 0;
         }
     }
 
-    public void UpgradeLevelElement(RoomType rType, RoomElementType rElementType) {
+    public void UpgradeLevelElement(RoomType rType, int rElementID) {
         switch (rType)
         {
             case RoomType.CannabisRoom:
-                cannabisRoomSave.UpgradeLevelElement(rElementType);
-                break;
-            default:
-                break;
-        }
-    }
-
-    public bool IsHaveRoomDataSave(RoomType rType) {
-        switch (rType)
-        {
-            case RoomType.CannabisRoom:
-                return cannabisRoomSave != null;
-            default:
-                return false;
-        }
-    }
-
-    public void SaveFirstRoomData(RoomData roomData) {
-        switch (roomData.rType)
-        {
-            case RoomType.CannabisRoom:
-                cannabisRoomSave = new RoomSave();
-                cannabisRoomSave.rType = roomData.rType;
-                cannabisRoomSave.InitRoomElementLevel(roomData.roomElementData);
+                cannabisRoomSaves[0].UpgradeLevelElement(rElementID);
                 break;
             default:
                 break;
@@ -67,12 +43,38 @@ public class RoomDataSave : SaveBase
         SaveData();
     }
 
-    public int GetTotalStaff(RoomType roomType)
+    public bool IsHaveRoomDataSave(RoomType rType, int roomID) {
+        switch (rType)
+        {
+            case RoomType.CannabisRoom:
+                return cannabisRoomSaves.Find(e=>e.roomID==roomID) != null;
+            default:
+                return false;
+        }
+    }
+
+    public void SaveFirstRoomData(RoomData roomData) {
+        RoomSave roomSave = new RoomSave();
+        roomSave.rType = roomData.rType;
+        roomSave.InitRoomElementLevel(roomData.roomElementData);
+        switch (roomData.rType)
+        {
+            case RoomType.CannabisRoom:
+                cannabisRoomSaves.Add(roomSave);
+                break;
+            default:
+                break;
+        }
+        IsMarkChangeData();
+        SaveData();
+    }
+
+    public int GetTotalStaff(RoomType roomType, int roomID)
     {
         switch (roomType)
         {
             case RoomType.CannabisRoom:
-                return cannabisRoomSave.totalStaff;
+                return cannabisRoomSaves.Find(e=>e.roomID == roomID).totalStaff;
             default:
                 return 0;
         }
@@ -82,15 +84,16 @@ public class RoomDataSave : SaveBase
 [System.Serializable]
 public class RoomSave {
     public RoomType rType;
+    public int roomID;
     public List<ElementRoomSave> elementRoomSaves = new List<ElementRoomSave>();
     public int totalStaff;
-    public int GetLevelRoomType(RoomElementType rElementType)
+    public int GetLevelRoomType(int rElementID)
     {
-        return elementRoomSaves.Find(e => e.rElementType == rElementType).level;
+        return elementRoomSaves.Find(e => e.rElementID == rElementID).level;
     }
 
-    public void UpgradeLevelElement(RoomElementType rElementType) {
-        elementRoomSaves.Find(e => e.rElementType == rElementType).level++;
+    public void UpgradeLevelElement(int rElementID) {
+        elementRoomSaves.Find(e => e.rElementID == rElementID).level++;
     }
 
     public void InitRoomElementLevel(List<RoomElementData> roomElementDatas) {
@@ -98,6 +101,7 @@ public class RoomSave {
         {
             ElementRoomSave newElementRoomSave = new ElementRoomSave();
             newElementRoomSave.rElementType = roomElementDatas[i].rType;
+            newElementRoomSave.rElementID = i;
             newElementRoomSave.level = 0;
             elementRoomSaves.Add(newElementRoomSave);
         }
@@ -107,5 +111,6 @@ public class RoomSave {
 [System.Serializable]
 public class ElementRoomSave {
     public RoomElementType rElementType;
+    public int rElementID;
     public int level;
 }

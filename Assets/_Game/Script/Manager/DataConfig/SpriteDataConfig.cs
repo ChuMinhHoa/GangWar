@@ -6,7 +6,7 @@ using UnityEngine;
 public class SpriteDataConfig : ScriptableObject
 {
     public List<Sprite> spriteIconRoomElement = new List<Sprite>();
-    public Sprite GetSpriteRoomElement(RoomType rType) {
+    public Sprite GetSpriteRoomElement(RoomElementType rType) {
         for (int i = 0; i < spriteIconRoomElement.Count; i++)
         {
             if (spriteIconRoomElement[i].name == rType.ToString())

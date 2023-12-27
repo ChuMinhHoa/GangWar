@@ -1,3 +1,4 @@
+using DG.Tweening;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -30,6 +31,8 @@ public class CameraController : MonoBehaviour
     float zoomValue;
     [SerializeField] float maxZoomValue = 30;
     [SerializeField] float minZoomValue = 5;
+    [SerializeField] float zoomOnElement = 15;
+    [SerializeField] float zoomDefalut = 25;
 
 
     private void Start()
@@ -103,6 +106,30 @@ public class CameraController : MonoBehaviour
             if (mainCamera.fieldOfView < maxZoomValue)
                 mainCamera.fieldOfView += Time.deltaTime * cameraZoomSpeed;
         }
+    }
+
+    public void OnRoomMode(Transform trsPointTarget) {
+        newPosition = trsPointTarget.position;
+        DOVirtual.Float(mainCamera.fieldOfView, zoomOnElement, 0.25f, (value) => {
+            mainCamera.fieldOfView = value;
+        });
+        StartCoroutine(CoroutineMoveCamera());
+    }
+
+    IEnumerator CoroutineMoveCamera()
+    {
+        while (Time.deltaTime * movementTime < 1f)
+        {
+            yield return new WaitForEndOfFrame();
+            cameraRoot.position = Vector3.Lerp(cameraRoot.position, newPosition, Time.deltaTime * movementTime);
+        }
+    }
+
+    public void OnOutRoomMode() {
+        StopCoroutine(CoroutineMoveCamera());
+        DOVirtual.Float(mainCamera.fieldOfView, zoomDefalut, 0.25f, (value) => {
+            mainCamera.fieldOfView = value;
+        });
     }
 
     void LimitCameraOffset()

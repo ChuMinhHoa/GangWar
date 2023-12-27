@@ -6,6 +6,7 @@ using UnityEngine;
 public class RoomElementBase
 {
     public RoomElementType rType;
-    public List<Transform> pointSpawns = new List<Transform>();
+    //public int roomElementID;
+    public Transform pointSpawn;
     public RoomElementData rData;
 }

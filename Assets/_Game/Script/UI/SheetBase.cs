@@ -41,4 +41,8 @@ public class SheetBase <Data> : MonoBehaviour
         listSlots.Add(newSlot);
         return newSlot;
     }
+
+    public virtual void ReloadDataOnSlot() {
+        currentSlot.ReloadData();
+    }
 }

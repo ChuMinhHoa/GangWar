@@ -8,5 +8,7 @@ public class PlayerData
     public int currentLevel;
     public RoomDataSave roomDataSave;
 
-    public void LoadData() { }
+    public void LoadData() {
+        roomDataSave.LoadData(currentLevel);
+    }
 }

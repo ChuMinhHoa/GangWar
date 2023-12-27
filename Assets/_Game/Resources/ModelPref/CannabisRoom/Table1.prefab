@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 5149205856323159160}
   - component: {fileID: 2347234069980846177}
   m_Layer: 6
-  m_Name: SM_Prop_Table_Slot
+  m_Name: Table1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

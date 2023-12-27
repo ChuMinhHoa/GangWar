@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class CanabisRoom : RoomBase<RoomType>
+public class CanabisRoom : RoomBase
 {
     public List<Transform> pointDoActionWater = new List<Transform>();
     public List<CannabisStaff> cannabisStaffs = new List<CannabisStaff>();
@@ -10,7 +10,7 @@ public class CanabisRoom : RoomBase<RoomType>
     FreePosition freePositionTemp;
     public override void SpawnStaff()
     {
-        totalStaff = ProfileManager.Instance.playerData.roomDataSave.GetTotalStaff(roomType);
+        totalStaff = ProfileManager.Instance.playerData.roomDataSave.GetTotalStaff(roomType, roomId);
         for (int i = 0; i < totalStaff; i++) {
             CannabisStaff newCannabisStaff = GameManager.Instance.pooling.GetCannabisStaff();
             freePositionTemp = GetFreePosition();

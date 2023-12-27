@@ -9,7 +9,7 @@ public class CannabisManager
     public RoomData roomData;
     public void InitData()
     {
-        roomData = ProfileManager.Instance.dataConfig.roomDataConfig.GetRoomData(RoomType.CannabisRoom);
+        roomData = ProfileManager.Instance.dataConfig.roomDataConfig.GetRoomData(RoomType.CannabisRoom, room.roomId);
         room.InitData(roomData);
     }
 }

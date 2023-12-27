@@ -4,7 +4,7 @@ public enum RoomType {
 
 public enum RoomElementType { 
     Table,
-    CanabisSlot
+    CannabisSlot
 }
 
 public enum FreeActionType { 

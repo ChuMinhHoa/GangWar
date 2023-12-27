@@ -14,78 +14,307 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   roomDatas:
   - rType: 0
+    roomID: 0
     roomElementData:
     - rType: 1
+      rElementID: 0
       prices:
-      - value: 1
-        exp: 3
-      - value: 1
-        exp: 3
-      - value: 1
-        exp: 3
-      - value: 1
-        exp: 3
-      - value: 1
-        exp: 3
-      - value: 1
-        exp: 3
-      - value: 1
-        exp: 3
-      - value: 1
-        exp: 3
-      - value: 1
-        exp: 3
-      - value: 1
-        exp: 3
-      - value: 1
-        exp: 3
-      - value: 1
-        exp: 3
-      - value: 1
-        exp: 3
-      - value: 1
-        exp: 3
-      - value: 1
-        exp: 3
-      - value: 1
-        exp: 3
-      - value: 1
-        exp: 3
-      - value: 1
-        exp: 3
-      - value: 1
-        exp: 3
-      - value: 1
-        exp: 3
-      - value: 1
-        exp: 3
-      - value: 1
-        exp: 3
-      - value: 1
-        exp: 3
-      - value: 1
-        exp: 3
-      - value: 1
-        exp: 3
-      - value: 1
-        exp: 3
-      - value: 1
-        exp: 3
-      - value: 1
-        exp: 3
-      - value: 1
-        exp: 3
-      - value: 1
-        exp: 3
-      - value: 1
-        exp: 3
-      - value: 1
-        exp: 3
+      - value: 15
+        exp: 0
+      - value: 32
+        exp: 0
+      - value: 48
+        exp: 0
     - rType: 1
+      rElementID: 1
       prices:
-      - value: 1
-        exp: 3
-      - value: 1
-        exp: 3
-      - value: 1
-        exp: 3
+      - value: 15
+        exp: 0
+      - value: 32
+        exp: 0
+      - value: 48
+        exp: 0
+    - rType: 1
+      rElementID: 2
+      prices:
+      - value: 15
+        exp: 0
+      - value: 32
+        exp: 0
+      - value: 48
+        exp: 0
+    - rType: 1
+      rElementID: 3
+      prices:
+      - value: 15
+        exp: 0
+      - value: 32
+        exp: 0
+      - value: 48
+        exp: 0
+    - rType: 1
+      rElementID: 4
+      prices:
+      - value: 15
+        exp: 0
+      - value: 32
+        exp: 0
+      - value: 48
+        exp: 0
+    - rType: 1
+      rElementID: 5
+      prices:
+      - value: 15
+        exp: 0
+      - value: 32
+        exp: 0
+      - value: 48
+        exp: 0
+    - rType: 1
+      rElementID: 6
+      prices:
+      - value: 15
+        exp: 0
+      - value: 32
+        exp: 0
+      - value: 48
+        exp: 0
+    - rType: 1
+      rElementID: 7
+      prices:
+      - value: 15
+        exp: 0
+      - value: 32
+        exp: 0
+      - value: 48
+        exp: 0
+    - rType: 1
+      rElementID: 8
+      prices:
+      - value: 15
+        exp: 0
+      - value: 32
+        exp: 0
+      - value: 48
+        exp: 0
+    - rType: 1
+      rElementID: 9
+      prices:
+      - value: 15
+        exp: 0
+      - value: 32
+        exp: 0
+      - value: 48
+        exp: 0
+    - rType: 1
+      rElementID: 10
+      prices:
+      - value: 15
+        exp: 0
+      - value: 32
+        exp: 0
+      - value: 48
+        exp: 0
+    - rType: 1
+      rElementID: 11
+      prices:
+      - value: 15
+        exp: 0
+      - value: 32
+        exp: 0
+      - value: 48
+        exp: 0
+    - rType: 1
+      rElementID: 12
+      prices:
+      - value: 15
+        exp: 0
+      - value: 32
+        exp: 0
+      - value: 48
+        exp: 0
+    - rType: 1
+      rElementID: 13
+      prices:
+      - value: 15
+        exp: 0
+      - value: 32
+        exp: 0
+      - value: 48
+        exp: 0
+    - rType: 1
+      rElementID: 14
+      prices:
+      - value: 15
+        exp: 0
+      - value: 32
+        exp: 0
+      - value: 48
+        exp: 0
+    - rType: 1
+      rElementID: 15
+      prices:
+      - value: 15
+        exp: 0
+      - value: 32
+        exp: 0
+      - value: 48
+        exp: 0
+    - rType: 1
+      rElementID: 16
+      prices:
+      - value: 15
+        exp: 0
+      - value: 32
+        exp: 0
+      - value: 48
+        exp: 0
+    - rType: 1
+      rElementID: 17
+      prices:
+      - value: 15
+        exp: 0
+      - value: 32
+        exp: 0
+      - value: 48
+        exp: 0
+    - rType: 1
+      rElementID: 18
+      prices:
+      - value: 15
+        exp: 0
+      - value: 32
+        exp: 0
+      - value: 48
+        exp: 0
+    - rType: 1
+      rElementID: 19
+      prices:
+      - value: 15
+        exp: 0
+      - value: 32
+        exp: 0
+      - value: 48
+        exp: 0
+    - rType: 1
+      rElementID: 20
+      prices:
+      - value: 15
+        exp: 0
+      - value: 32
+        exp: 0
+      - value: 48
+        exp: 0
+    - rType: 1
+      rElementID: 21
+      prices:
+      - value: 15
+        exp: 0
+      - value: 32
+        exp: 0
+      - value: 48
+        exp: 0
+    - rType: 1
+      rElementID: 22
+      prices:
+      - value: 15
+        exp: 0
+      - value: 32
+        exp: 0
+      - value: 48
+        exp: 0
+    - rType: 1
+      rElementID: 23
+      prices:
+      - value: 15
+        exp: 0
+      - value: 32
+        exp: 0
+      - value: 48
+        exp: 0
+    - rType: 1
+      rElementID: 24
+      prices:
+      - value: 15
+        exp: 0
+      - value: 32
+        exp: 0
+      - value: 48
+        exp: 0
+    - rType: 1
+      rElementID: 25
+      prices:
+      - value: 15
+        exp: 0
+      - value: 32
+        exp: 0
+      - value: 48
+        exp: 0
+    - rType: 1
+      rElementID: 26
+      prices:
+      - value: 15
+        exp: 0
+      - value: 32
+        exp: 0
+      - value: 48
+        exp: 0
+    - rType: 1
+      rElementID: 27
+      prices:
+      - value: 15
+        exp: 0
+      - value: 32
+        exp: 0
+      - value: 48
+        exp: 0
+    - rType: 1
+      rElementID: 28
+      prices:
+      - value: 15
+        exp: 0
+      - value: 32
+        exp: 0
+      - value: 48
+        exp: 0
+    - rType: 1
+      rElementID: 29
+      prices:
+      - value: 15
+        exp: 0
+      - value: 32
+        exp: 0
+      - value: 48
+        exp: 0
+    - rType: 1
+      rElementID: 30
+      prices:
+      - value: 15
+        exp: 0
+      - value: 32
+        exp: 0
+      - value: 48
+        exp: 0
+    - rType: 1
+      rElementID: 31
+      prices:
+      - value: 15
+        exp: 0
+      - value: 32
+        exp: 0
+      - value: 48
+        exp: 0
+    - rType: 0
+      rElementID: 32
+      prices:
+      - value: 31
+        exp: 0
+      - value: 35
+        exp: 0
+      - value: 38
+        exp: 0
+  elementDescriptions:
+  - rElementType: 1
+    description: Cannabis
+  - rElementType: 0
+    description: Table

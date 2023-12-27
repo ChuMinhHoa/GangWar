@@ -13,14 +13,18 @@ public class UpgradeSlot : SlotBase<RoomElementData>
     [SerializeField] Sprite bgDeselect;
     [SerializeField] Sprite bgSelect;
     [SerializeField] Sprite bgLock;
+    public bool isMaxlevel;
+    RoomType roomType;
 
+    public void SetCurrentRoomType(RoomType roomType) { this.roomType = roomType; } 
     public override void InitData(RoomElementData data)
     {
         base.InitData(data);
-        currentLevel = ProfileManager.Instance.playerData.currentLevel;
+        currentLevel = ProfileManager.Instance.playerData.roomDataSave.GetLevelRoomElementOnRoomType(roomType, data.rElementID);
         txtLevel.text = currentLevel.ToString();
-        if (currentLevel == 0)
-            LockMode();
+        imgIcon.sprite = ProfileManager.Instance.dataConfig.spriteDataConfig.GetSpriteRoomElement(data.rType);
+        isMaxlevel = data.prices.Count == currentLevel;
+        DeSelectedSwitchMode();
     }
 
     public void DeSelectedSwitchMode() {
@@ -38,5 +42,12 @@ public class UpgradeSlot : SlotBase<RoomElementData>
     {
         imgBackground.sprite = bgSelect;
         base.OnChoose();
+    }
+
+    public override void ReloadData()
+    {
+        currentLevel = ProfileManager.Instance.playerData.roomDataSave.GetLevelRoomElementOnRoomType(roomType, data.rElementID);
+        txtLevel.text = currentLevel.ToString();
+        isMaxlevel = data.prices.Count == currentLevel;
     }
 }

@@ -10,6 +10,7 @@ public class GameManager : Singleton<GameManager>
     public ObjectPooling pooling;
     public CharactorManager charactorManager;
     public RoomManager roomManager;
+    public CameraController cameraController;
 
     bool isTouching = false;
     Vector3 touchUp, touchDown;
@@ -53,5 +54,9 @@ public class GameManager : Singleton<GameManager>
                 }
             }
         }
+    }
+
+    public GameObject GetModelPref(RoomElementType roomElementType, int level) {
+        return Resources.Load("ModelPref/CannabisRoom/" + roomElementType.ToString() + "_" + level) as GameObject;
     }
 }

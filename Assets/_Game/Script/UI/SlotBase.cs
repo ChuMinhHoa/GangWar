@@ -10,6 +10,7 @@ public class SlotBase<Data> : MonoBehaviour
     public Data data;
     public Transform trsAnim;
     public Button btnChoose;
+    public Image imgIcon;
     public UnityAction<SlotBase<Data>> actionCallback;
     private void Awake()
     {
@@ -25,8 +26,9 @@ public class SlotBase<Data> : MonoBehaviour
     }
 
     public virtual void OnChoose() {
-        UIAnimationController.BtnAnimZoomBasic(trsAnim, .25f, () => {
-            if (actionCallback != null) actionCallback(this);
-        });
+        UIAnimationController.BtnAnimZoomBasic(trsAnim, .25f);
+        if (actionCallback != null) actionCallback(this);
     }
+
+    public virtual void ReloadData() { }
 }

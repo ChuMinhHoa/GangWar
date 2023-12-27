@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 6780881434444058761}
   - component: {fileID: 4545428040657614879}
   m_Layer: 6
-  m_Name: SM_Prop_Plant_Slot
+  m_Name: CannabisSlot_1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

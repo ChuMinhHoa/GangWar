@@ -13,4 +13,5 @@ MonoBehaviour:
   m_Name: SpriteDataConfig
   m_EditorClassIdentifier: 
   spriteIconRoomElement:
-  - {fileID: 21300000, guid: 667cea953eb207b4bac6b5b98d92b989, type: 3}
+  - {fileID: 21300000, guid: 85268b54bb942824f8140d896f8548c9, type: 3}
+  - {fileID: 21300000, guid: a325ae12cb6ec0e43ba6cbf34f76bf56, type: 3}
