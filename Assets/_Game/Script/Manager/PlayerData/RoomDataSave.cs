@@ -6,6 +6,7 @@ using UnityEngine;
 public class RoomDataSave : SaveBase
 {
     public List<RoomSave> cannabisRoomSaves = new List<RoomSave>();
+    RoomSave roomSaveTemp;
     public override void LoadData(int level)
     {
         SetStringSave("RoomDataSave" + level);
@@ -21,13 +22,18 @@ public class RoomDataSave : SaveBase
         }
     }
 
-    public int GetLevelRoomElementOnRoomType(RoomType rType, int rElementID) {
+    public int GetLevelRoomElementOnRoomType(RoomType rType, int rElementID, int roomID) {
         switch (rType) {
             case RoomType.CannabisRoom:
-                return cannabisRoomSaves[0].GetLevelRoomType(rElementID);
+                return GetRoomSave(cannabisRoomSaves, roomID).GetLevelRoomType(rElementID);
             default:
                 return 0;
         }
+    }
+
+    RoomSave GetRoomSave(List<RoomSave> roomSaves, int rID) {
+        roomSaveTemp = roomSaves.Find(e => e.roomID == rID);
+        return roomSaveTemp;
     }
 
     public void UpgradeLevelElement(RoomType rType, int rElementID) {
@@ -102,7 +108,7 @@ public class RoomSave {
             ElementRoomSave newElementRoomSave = new ElementRoomSave();
             newElementRoomSave.rElementType = roomElementDatas[i].rType;
             newElementRoomSave.rElementID = i;
-            newElementRoomSave.level = 0;
+            newElementRoomSave.level = roomElementDatas[i].levelDefault;
             elementRoomSaves.Add(newElementRoomSave);
         }
     }

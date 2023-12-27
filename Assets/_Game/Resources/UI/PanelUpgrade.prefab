@@ -1863,7 +1863,7 @@ MonoBehaviour:
     m_PressedTrigger: Pressed
     m_SelectedTrigger: Selected
     m_DisabledTrigger: Disabled
-  m_Interactable: 1
+  m_Interactable: 0
   m_TargetGraphic: {fileID: 5233263576131563649}
   m_FillRect: {fileID: 4623588738253613250}
   m_HandleRect: {fileID: 0}
@@ -1871,7 +1871,7 @@ MonoBehaviour:
   m_MinValue: 0
   m_MaxValue: 1
   m_WholeNumbers: 0
-  m_Value: 0.336
+  m_Value: 0.079
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls: []
@@ -2558,6 +2558,7 @@ MonoBehaviour:
   rectPrice: {fileID: 6966561137012452229}
   objMax: {fileID: 8651126197949735844}
   scroll: {fileID: 5253191571328172446}
+  sUpgrade: {fileID: 2790544892987296506}
 --- !u!114 &5999867909067777230
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2736,7 +2737,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 2a494c3f274624b3f9aceba815c0dd4c, type: 3}
+  m_Sprite: {fileID: 21300000, guid: b02caed49f77549d68353cfcd2234daf, type: 3}
   m_Type: 1
   m_PreserveAspect: 0
   m_FillCenter: 1

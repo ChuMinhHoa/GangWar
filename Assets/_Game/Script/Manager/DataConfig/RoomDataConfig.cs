@@ -30,6 +30,7 @@ public class RoomDataConfig : ScriptableObject
 public class RoomData {
     public RoomType rType;
     public int roomID;
+    public int totalStaffDefault;
     public List<RoomElementData> roomElementData = new List<RoomElementData>();
 
     public void InitID() {
@@ -38,10 +39,4 @@ public class RoomData {
             roomElementData[i].rElementID = i;
         }
     }
-}
-
-[System.Serializable]
-public class RoomElementDescription {
-    public RoomElementType rElementType;
-    public string description;
 }

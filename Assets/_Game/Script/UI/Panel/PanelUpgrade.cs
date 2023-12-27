@@ -20,7 +20,9 @@ public class PanelUpgrade : UIPanelBase
     [SerializeField] RectTransform rectPrice;
     [SerializeField] GameObject objMax;
     [SerializeField] ScrollRect scroll;
+    [SerializeField] Slider sUpgrade;
     RoomInterface currentRoomInterface;
+    float currentProgressUpgrade;
     public override void Awake()
     {
         uIPanelType = UIPanelType.PanelUpgrade;
@@ -40,6 +42,9 @@ public class PanelUpgrade : UIPanelBase
         upgradeSheet.LoadData(roomInterface.GetRoomElementDatas());
         upgradeSheet.SetCurrentRoomType(roomInterface.GetRoomType());
         upgradeSheet.listSlots[0].OnChoose();
+        ChangeSliderMaxValue(roomInterface.GetTotalRoomUpgrade());
+        currentProgressUpgrade = roomInterface.GetCurrentProgressUpgrade();
+        ChangeSliderUpgrade(currentProgressUpgrade);
     }
 
     void ActionCallBackOnUpgradeSlot(SlotBase<RoomElementData> slot) {
@@ -65,13 +70,15 @@ public class PanelUpgrade : UIPanelBase
         currentRoomInterface.OnUpgradeElement(upgradeSheet.currentSlot.data.rType, upgradeSheet.currentSlot.data.rElementID, (upgradeSheet.currentSlot as UpgradeSlot).currentLevel + 1);
         upgradeSheet.ReloadDataOnSlot();
         ActionCallBackOnUpgradeSlot(upgradeSheet.currentSlot);
+        currentProgressUpgrade++;
+        ChangeSliderUpgrade(currentProgressUpgrade);
         UIAnimationController.BtnAnimZoomBasic(btnUpgrade.transform, 0.25f);
-        
     }
 
     void ClosePanel() {
         uIPanelAnimOpenAndClose.OnClose(() => {
             GameManager.Instance.cameraController.OnOutRoomMode();
+            upgradeSheet.currentSlot = null;
             UIManager.Instance.ClosePanelUpgrade();
         });
     }
@@ -80,4 +87,8 @@ public class PanelUpgrade : UIPanelBase
         yield return new WaitForNextFrameUnit();
         LayoutRebuilder.ForceRebuildLayoutImmediate(rectPrice);
     }
+
+    void ChangeSliderMaxValue(float valueMax) { sUpgrade.maxValue = valueMax; }
+
+    void ChangeSliderUpgrade(float value) { sUpgrade.value = value; }
 }

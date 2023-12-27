@@ -59,4 +59,6 @@ public class GameManager : Singleton<GameManager>
     public GameObject GetModelPref(RoomElementType roomElementType, int level) {
         return Resources.Load("ModelPref/CannabisRoom/" + roomElementType.ToString() + "_" + level) as GameObject;
     }
+
+    public RoomInterface GetRoomInterface() { return selectedRoom; }
 }

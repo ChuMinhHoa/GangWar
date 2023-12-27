@@ -21,7 +21,6 @@ public class CameraController : MonoBehaviour
     Vector3 vectorDir;
     Vector3 newPosition;
     Vector3 lastPoint;
-    bool controlTakeover;
 
     [SerializeField] float cameraZoomSpeed;
     Touch firstFinger;
@@ -34,6 +33,7 @@ public class CameraController : MonoBehaviour
     [SerializeField] float zoomOnElement = 15;
     [SerializeField] float zoomDefalut = 25;
 
+    bool isOnRoomMode;
 
     private void Start()
     {
@@ -47,6 +47,10 @@ public class CameraController : MonoBehaviour
     private void Update()
     {
         ControlCamera();
+        if (isOnRoomMode)
+        {
+            cameraRoot.position = Vector3.Lerp(cameraRoot.position, newPosition, Time.deltaTime * movementTime);
+        }
     }
 
     void ControlCamera()
@@ -105,28 +109,19 @@ public class CameraController : MonoBehaviour
         {
             if (mainCamera.fieldOfView < maxZoomValue)
                 mainCamera.fieldOfView += Time.deltaTime * cameraZoomSpeed;
-        }
+        }        
     }
 
     public void OnRoomMode(Transform trsPointTarget) {
         newPosition = trsPointTarget.position;
+        isOnRoomMode = true;
         DOVirtual.Float(mainCamera.fieldOfView, zoomOnElement, 0.25f, (value) => {
             mainCamera.fieldOfView = value;
         });
-        StartCoroutine(CoroutineMoveCamera());
-    }
-
-    IEnumerator CoroutineMoveCamera()
-    {
-        while (Time.deltaTime * movementTime < 1f)
-        {
-            yield return new WaitForEndOfFrame();
-            cameraRoot.position = Vector3.Lerp(cameraRoot.position, newPosition, Time.deltaTime * movementTime);
-        }
     }
 
     public void OnOutRoomMode() {
-        StopCoroutine(CoroutineMoveCamera());
+        isOnRoomMode = false;
         DOVirtual.Float(mainCamera.fieldOfView, zoomDefalut, 0.25f, (value) => {
             mainCamera.fieldOfView = value;
         });

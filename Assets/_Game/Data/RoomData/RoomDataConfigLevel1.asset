@@ -15,9 +15,11 @@ MonoBehaviour:
   roomDatas:
   - rType: 0
     roomID: 0
+    totalStaffDefault: 0
     roomElementData:
     - rType: 1
       rElementID: 0
+      levelDefault: 1
       prices:
       - value: 15
         exp: 0
@@ -27,6 +29,7 @@ MonoBehaviour:
         exp: 0
     - rType: 1
       rElementID: 1
+      levelDefault: 1
       prices:
       - value: 15
         exp: 0
@@ -36,6 +39,7 @@ MonoBehaviour:
         exp: 0
     - rType: 1
       rElementID: 2
+      levelDefault: 1
       prices:
       - value: 15
         exp: 0
@@ -45,6 +49,7 @@ MonoBehaviour:
         exp: 0
     - rType: 1
       rElementID: 3
+      levelDefault: 1
       prices:
       - value: 15
         exp: 0
@@ -54,6 +59,7 @@ MonoBehaviour:
         exp: 0
     - rType: 1
       rElementID: 4
+      levelDefault: 0
       prices:
       - value: 15
         exp: 0
@@ -63,6 +69,7 @@ MonoBehaviour:
         exp: 0
     - rType: 1
       rElementID: 5
+      levelDefault: 0
       prices:
       - value: 15
         exp: 0
@@ -72,6 +79,7 @@ MonoBehaviour:
         exp: 0
     - rType: 1
       rElementID: 6
+      levelDefault: 0
       prices:
       - value: 15
         exp: 0
@@ -81,6 +89,7 @@ MonoBehaviour:
         exp: 0
     - rType: 1
       rElementID: 7
+      levelDefault: 0
       prices:
       - value: 15
         exp: 0
@@ -90,6 +99,7 @@ MonoBehaviour:
         exp: 0
     - rType: 1
       rElementID: 8
+      levelDefault: 1
       prices:
       - value: 15
         exp: 0
@@ -99,6 +109,7 @@ MonoBehaviour:
         exp: 0
     - rType: 1
       rElementID: 9
+      levelDefault: 1
       prices:
       - value: 15
         exp: 0
@@ -108,6 +119,7 @@ MonoBehaviour:
         exp: 0
     - rType: 1
       rElementID: 10
+      levelDefault: 1
       prices:
       - value: 15
         exp: 0
@@ -117,6 +129,7 @@ MonoBehaviour:
         exp: 0
     - rType: 1
       rElementID: 11
+      levelDefault: 1
       prices:
       - value: 15
         exp: 0
@@ -126,6 +139,7 @@ MonoBehaviour:
         exp: 0
     - rType: 1
       rElementID: 12
+      levelDefault: 0
       prices:
       - value: 15
         exp: 0
@@ -135,6 +149,7 @@ MonoBehaviour:
         exp: 0
     - rType: 1
       rElementID: 13
+      levelDefault: 0
       prices:
       - value: 15
         exp: 0
@@ -144,6 +159,7 @@ MonoBehaviour:
         exp: 0
     - rType: 1
       rElementID: 14
+      levelDefault: 0
       prices:
       - value: 15
         exp: 0
@@ -153,6 +169,7 @@ MonoBehaviour:
         exp: 0
     - rType: 1
       rElementID: 15
+      levelDefault: 0
       prices:
       - value: 15
         exp: 0
@@ -162,6 +179,7 @@ MonoBehaviour:
         exp: 0
     - rType: 1
       rElementID: 16
+      levelDefault: 0
       prices:
       - value: 15
         exp: 0
@@ -171,6 +189,7 @@ MonoBehaviour:
         exp: 0
     - rType: 1
       rElementID: 17
+      levelDefault: 0
       prices:
       - value: 15
         exp: 0
@@ -180,6 +199,7 @@ MonoBehaviour:
         exp: 0
     - rType: 1
       rElementID: 18
+      levelDefault: 0
       prices:
       - value: 15
         exp: 0
@@ -189,6 +209,7 @@ MonoBehaviour:
         exp: 0
     - rType: 1
       rElementID: 19
+      levelDefault: 0
       prices:
       - value: 15
         exp: 0
@@ -198,6 +219,7 @@ MonoBehaviour:
         exp: 0
     - rType: 1
       rElementID: 20
+      levelDefault: 0
       prices:
       - value: 15
         exp: 0
@@ -207,6 +229,7 @@ MonoBehaviour:
         exp: 0
     - rType: 1
       rElementID: 21
+      levelDefault: 0
       prices:
       - value: 15
         exp: 0
@@ -216,6 +239,7 @@ MonoBehaviour:
         exp: 0
     - rType: 1
       rElementID: 22
+      levelDefault: 0
       prices:
       - value: 15
         exp: 0
@@ -225,6 +249,7 @@ MonoBehaviour:
         exp: 0
     - rType: 1
       rElementID: 23
+      levelDefault: 0
       prices:
       - value: 15
         exp: 0
@@ -234,6 +259,7 @@ MonoBehaviour:
         exp: 0
     - rType: 1
       rElementID: 24
+      levelDefault: 0
       prices:
       - value: 15
         exp: 0
@@ -243,6 +269,7 @@ MonoBehaviour:
         exp: 0
     - rType: 1
       rElementID: 25
+      levelDefault: 0
       prices:
       - value: 15
         exp: 0
@@ -252,6 +279,7 @@ MonoBehaviour:
         exp: 0
     - rType: 1
       rElementID: 26
+      levelDefault: 0
       prices:
       - value: 15
         exp: 0
@@ -261,6 +289,7 @@ MonoBehaviour:
         exp: 0
     - rType: 1
       rElementID: 27
+      levelDefault: 0
       prices:
       - value: 15
         exp: 0
@@ -270,6 +299,7 @@ MonoBehaviour:
         exp: 0
     - rType: 1
       rElementID: 28
+      levelDefault: 0
       prices:
       - value: 15
         exp: 0
@@ -279,6 +309,7 @@ MonoBehaviour:
         exp: 0
     - rType: 1
       rElementID: 29
+      levelDefault: 0
       prices:
       - value: 15
         exp: 0
@@ -288,6 +319,7 @@ MonoBehaviour:
         exp: 0
     - rType: 1
       rElementID: 30
+      levelDefault: 0
       prices:
       - value: 15
         exp: 0
@@ -297,6 +329,7 @@ MonoBehaviour:
         exp: 0
     - rType: 1
       rElementID: 31
+      levelDefault: 0
       prices:
       - value: 15
         exp: 0
@@ -306,6 +339,7 @@ MonoBehaviour:
         exp: 0
     - rType: 0
       rElementID: 32
+      levelDefault: 0
       prices:
       - value: 31
         exp: 0

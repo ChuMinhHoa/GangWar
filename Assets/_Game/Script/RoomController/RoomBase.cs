@@ -8,6 +8,9 @@ public interface RoomInterface {
     public void OnUpgradeElement(RoomElementType rElementType, int id, int level);
 
     public Transform GetElementTransform(RoomElementType roomElement, int id);
+    public int GetRoomID();
+    public float GetTotalRoomUpgrade();
+    public float GetCurrentProgressUpgrade();
 }
 public class RoomBase : MonoBehaviour, RoomInterface
 {
@@ -43,7 +46,7 @@ public class RoomBase : MonoBehaviour, RoomInterface
         {
             Destroy(roomElementBase.pointSpawn.GetChild(0).gameObject);
         }
-        int elementLevel = ProfileManager.Instance.playerData.roomDataSave.GetLevelRoomElementOnRoomType(roomType, roomElementBase.rData.rElementID);
+        int elementLevel = ProfileManager.Instance.playerData.roomDataSave.GetLevelRoomElementOnRoomType(roomType, roomElementBase.rData.rElementID, roomId);
         UpdatePrefOnPosition(roomElementBase, elementLevel);
     }
 
@@ -109,6 +112,33 @@ public class RoomBase : MonoBehaviour, RoomInterface
     public Transform GetElementTransform(RoomElementType roomElement, int id)
     {
        return roomElements.Find(e => e.rType == roomElement && e.rData.rElementID == id).pointSpawn.transform;
+    }
+
+    public int GetRoomID()
+    {
+        return roomId;
+    }
+
+    float totalUpgradeReturn;
+    float currentUpgradeProgress;
+    public float GetTotalRoomUpgrade()
+    {
+        totalUpgradeReturn = 0;
+        for (int i = 0; i < roomElements.Count; i++)
+        {
+            totalUpgradeReturn += roomElements[i].rData.prices.Count;
+        }
+        return totalUpgradeReturn;
+    }
+
+    public float GetCurrentProgressUpgrade()
+    {
+        currentUpgradeProgress = 0;
+        for (int i = 0; i < roomElements.Count; i++)
+        {
+            currentUpgradeProgress += ProfileManager.Instance.playerData.roomDataSave.GetLevelRoomElementOnRoomType(roomType, roomElements[i].rData.rElementID, roomId);
+        }
+        return currentUpgradeProgress;
     }
 }
 

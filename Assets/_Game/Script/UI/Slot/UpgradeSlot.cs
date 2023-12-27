@@ -20,7 +20,7 @@ public class UpgradeSlot : SlotBase<RoomElementData>
     public override void InitData(RoomElementData data)
     {
         base.InitData(data);
-        currentLevel = ProfileManager.Instance.playerData.roomDataSave.GetLevelRoomElementOnRoomType(roomType, data.rElementID);
+        currentLevel = ProfileManager.Instance.playerData.roomDataSave.GetLevelRoomElementOnRoomType(roomType, data.rElementID, GameManager.Instance.GetRoomInterface().GetRoomID());
         txtLevel.text = currentLevel.ToString();
         imgIcon.sprite = ProfileManager.Instance.dataConfig.spriteDataConfig.GetSpriteRoomElement(data.rType);
         isMaxlevel = data.prices.Count == currentLevel;
@@ -46,7 +46,7 @@ public class UpgradeSlot : SlotBase<RoomElementData>
 
     public override void ReloadData()
     {
-        currentLevel = ProfileManager.Instance.playerData.roomDataSave.GetLevelRoomElementOnRoomType(roomType, data.rElementID);
+        currentLevel = ProfileManager.Instance.playerData.roomDataSave.GetLevelRoomElementOnRoomType(roomType, data.rElementID, GameManager.Instance.GetRoomInterface().GetRoomID());
         txtLevel.text = currentLevel.ToString();
         isMaxlevel = data.prices.Count == currentLevel;
     }
