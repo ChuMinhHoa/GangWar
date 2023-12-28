@@ -37,8 +37,8 @@ public class RoomBase : MonoBehaviour, RoomInterface
         {
             ClearObject(roomElements[i]);
         }
-       
 
+        totalStaff = ProfileManager.Instance.playerData.roomDataSave.GetTotalStaff(roomType, roomId);
         SpawnStaff();
     }
 

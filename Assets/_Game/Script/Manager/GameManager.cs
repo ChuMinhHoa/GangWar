@@ -8,9 +8,10 @@ using static UnityEditor.SceneView;
 public class GameManager : Singleton<GameManager>
 {
     public ObjectPooling pooling;
-    public CharactorManager charactorManager;
+    public StaffManager charactorManager;
     public RoomManager roomManager;
     public CameraController cameraController;
+    public StaffManager staffManager;
 
     bool isTouching = false;
     Vector3 touchUp, touchDown;

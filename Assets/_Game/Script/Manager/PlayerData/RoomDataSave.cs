@@ -62,6 +62,7 @@ public class RoomDataSave : SaveBase
     public void SaveFirstRoomData(RoomData roomData) {
         RoomSave roomSave = new RoomSave();
         roomSave.rType = roomData.rType;
+        roomSave.totalStaff = roomData.totalStaffDefault;
         roomSave.InitRoomElementLevel(roomData.roomElementData);
         switch (roomData.rType)
         {

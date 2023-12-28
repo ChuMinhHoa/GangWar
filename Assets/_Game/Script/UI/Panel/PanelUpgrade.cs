@@ -27,7 +27,7 @@ public class PanelUpgrade : UIPanelBase
     RoomInterface currentRoomInterface;
     float currentProgressUpgrade;
     int slotAmount;
-    int totalSlot;
+    int totalLine;
 
     public override void Awake()
     {
@@ -53,12 +53,14 @@ public class PanelUpgrade : UIPanelBase
         ChangeSliderMaxValue(roomInterface.GetTotalRoomUpgrade());
         currentProgressUpgrade = roomInterface.GetCurrentProgressUpgrade();
         ChangeSliderUpgrade(currentProgressUpgrade);
+        totalLine = (int)(upgradeSheet.listSlots.Count / slotAmount);
     }
 
     void ActionCallBackOnUpgradeSlot(SlotBase<RoomElementData> slot) {
-        totalSlot = upgradeSheet.listSlots.Count;
+        
         int currentLevel = (slot as UpgradeSlot).currentLevel;
         objNext.SetActive((slot as UpgradeSlot).isMaxlevel);
+        btnNext.interactable = objNext.activeSelf;
         btnUpgrade.gameObject.SetActive(!objNext.activeSelf);
 
         if (!objNext.activeSelf)
@@ -86,9 +88,13 @@ public class PanelUpgrade : UIPanelBase
     }
 
     void NextElement() {
-        UIAnimationController.BtnAnimZoomBasic(btnNext.transform, 0.25f, () => {
+        btnNext.interactable = false;
+        UIAnimationController.BtnAnimZoomBasic(btnNext.transform, 0.2f, () => {
             upgradeSheet.GetNextSlot();
+            int currentLine = (upgradeSheet.currentSlot.transform.GetSiblingIndex() - 1) / slotAmount;
+            scroll.verticalNormalizedPosition = 1 - ((float)currentLine / (float)totalLine);
         });
+       
     }
 
     void ClosePanel() {
