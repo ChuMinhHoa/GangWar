@@ -15,7 +15,7 @@ MonoBehaviour:
   roomDatas:
   - rType: 0
     roomID: 0
-    totalStaffDefault: 0
+    totalStaffDefault: 1
     roomElementData:
     - rType: 1
       rElementID: 0
@@ -275,6 +275,30 @@ MonoBehaviour:
         exp: 0
     - rType: 0
       rElementID: 32
+      levelDefault: 0
+      prices:
+      - value: 31
+        exp: 0
+      - value: 35
+        exp: 0
+    - rType: 0
+      rElementID: 33
+      levelDefault: 0
+      prices:
+      - value: 31
+        exp: 0
+      - value: 35
+        exp: 0
+    - rType: 0
+      rElementID: 34
+      levelDefault: 0
+      prices:
+      - value: 31
+        exp: 0
+      - value: 35
+        exp: 0
+    - rType: 0
+      rElementID: 35
       levelDefault: 0
       prices:
       - value: 31
