@@ -1394,7 +1394,7 @@ GameObject:
   - component: {fileID: 95110851424040206}
   - component: {fileID: 1821733516026250401}
   m_Layer: 0
-  m_Name: SM_Chr_GangMember_Male_01
+  m_Name: Guard_01
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

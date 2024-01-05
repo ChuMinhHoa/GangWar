@@ -7,8 +7,10 @@ public enum RoomElementType {
     CannabisSlot
 }
 
-public enum FreeActionType { 
-    Smoke
+public enum ActionType {
+    None = 0,
+    Smoke = 100,
+    Watering = 200    
 }
 
 public enum UIPanelType {

@@ -7,4 +7,5 @@ public class DataConfig
 {
     public RoomDataConfig roomDataConfig;
     public SpriteDataConfig spriteDataConfig;
+    public ActionDataConfig actionDataConfig;
 }

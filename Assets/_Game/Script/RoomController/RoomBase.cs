@@ -18,9 +18,8 @@ public class RoomBase : MonoBehaviour, RoomInterface
     public int roomId;
     public int totalStaff;
     public List<RoomElementBase> roomElements = new List<RoomElementBase>();
-    public List<FreePosition> freePositions = new List<FreePosition>();
-    public List<StaffBase> staffs = new List<StaffBase>();
-    public RoomElementBase roomElementTemp;
+    public List<PointDoAction> freePositions = new List<PointDoAction>();
+    RoomElementBase roomElementTemp;
     public RoomData roomData;
     public void InitData(RoomData roomData) { 
         this.roomData = roomData;
@@ -66,10 +65,10 @@ public class RoomBase : MonoBehaviour, RoomInterface
         return roomElements.Find(e => e.rType == furnitureType);
     }
 
-    public virtual FreePosition GetFreePosition() {
+    public virtual PointDoAction GetFreePosition() {
         for (int i = 0; i < freePositions.Count; i++)
         {
-            if (!freePositions[i].isAtive)
+            if (!freePositions[i].isActive)
             {
                 return freePositions[i];
             }
@@ -97,7 +96,7 @@ public class RoomBase : MonoBehaviour, RoomInterface
         return roomData.rType;
     }
 
-    public void OnUpgradeElement(RoomElementType rElementType, int id, int level)
+    public virtual void OnUpgradeElement(RoomElementType rElementType, int id, int level)
     {
         for (int i = 0;i < roomElements.Count;i++)
         {
@@ -110,7 +109,7 @@ public class RoomBase : MonoBehaviour, RoomInterface
     }
     GameObject objPref;
     Transform trsTemp;
-    void UpdatePrefOnPosition(RoomElementBase roomElement, int level, int pointIndex) {
+    public virtual void UpdatePrefOnPosition(RoomElementBase roomElement, int level, int pointIndex) {
         objPref = GameManager.Instance.GetModelPref(roomElement.rType, level);
         if (objPref != null) {
             if (roomElement.pointSpawn[pointIndex].childCount > 0)
@@ -155,8 +154,8 @@ public class RoomBase : MonoBehaviour, RoomInterface
 }
 
 [System.Serializable]
-public class FreePosition {
+public class PointDoAction {
+    public ActionType actionType;
     public Transform pointStay;
-    public bool isAtive;
-    public FreeActionType actionType;
+    public bool isActive;
 }
